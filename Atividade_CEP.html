@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript</title>
+    <script>
+
+        function validarDados() {
+
+            const campos = ["nome", "endereco", "bairro", "cep"];
+
+            for (const campo of campos) {
+
+                const valor = document.getElementById(campo).value;
+
+                if (valor === "") {
+
+                    console.log(`O campo ${campo.charAt(0).toUpperCase() + campo.slice(1)} está vazio!`);
+
+                } else if (valor.length > 20) {
+
+                    console.log(`O campo ${campo.charAt(0).toUpperCase() + campo.slice(1)} está muito grande!`);
+
+                }
+
+            }
+
+            const cepValor = document.getElementById('cep').value;
+
+            const regex = /^\d{5}-\d{3}$/;
+
+            if (cepValor === "") {
+
+                console.log("O campo Cep está vazio!");
+
+            } else if (cepValor.length < 9) {
+
+                console.log("Está faltando um valor no Cep");
+
+            } else if (cepValor.length > 10) {
+
+                console.log("Muitos caracteres utilizados no Cep");
+
+            } else if (!regex.test(cepValor)) {
+
+                console.log("O hífen NÃO está no lugar certo");
+
+            } else {
+
+                console.log("O hífen está no lugar certo");
+
+            }
+        }
+
+    </script>
+
+</head>
+
+<body>
+
+    <form>
+        Nome:<input type="text" name="nome" id="nome"><br><br>
+        Endereço:<input type="text" name="endereco" id="endereco"><br><br>
+        Bairro:<input type="text" name="bairro" id="bairro"><br><br>
+        Cep:<input type="text" name="cep" id="cep"><br><br>
+        <button type="button" name="cadastrar" id="cadastrar" onclick="validarDados()">Cadastrar</button>
+    </form>
+
+</body>
+
+</html>
